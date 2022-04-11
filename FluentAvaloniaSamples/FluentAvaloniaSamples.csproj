@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.999-cibuild0022609-beta" />
-    <PackageReference Include="Avalonia.AvaloniaEdit" Version="0.10.12.1" />
+    <PackageReference Include="Avalonia.AvaloniaEdit" Version="0.10.12.2" />
     <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0022609-beta" />
     <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0022609-beta" />
   </ItemGroup>
