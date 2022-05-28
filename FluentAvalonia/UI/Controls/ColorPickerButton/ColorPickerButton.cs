@@ -60,18 +60,17 @@ public partial class ColorPickerButton : TemplatedControl, IStyleable
 		_flyout.Dismissed -= OnFlyoutDismissed;
 	}
 
-	protected override void OnPropertyChanged<T>(AvaloniaPropertyChangedEventArgs<T> change)
-	{
-		base.OnPropertyChanged(change);
-		if (change.Property == ColorProperty)
-		{
-			ColorChanged?.Invoke(this, new ColorButtonColorChangedEventArgs(
-                change.OldValue.GetValueOrDefault<Color?>(),
-				change.NewValue.GetValueOrDefault<Color?>()));
-		}
-	}
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        base.OnPropertyChanged(change);
+        if (change.Property == ColorProperty)
+        {
+            var (oldV, newV) = change.GetOldAndNewValue<Color2>();
+            ColorChanged?.Invoke(this, new ColorChangedEventArgs(oldV, newV));
+        }
+    }
 
-	private void OnButtonClick(object sender, RoutedEventArgs e)
+    private void OnButtonClick(object sender, RoutedEventArgs e)
 	{
         // ColorPicker is a large control, so the flyout is shared among all the ColorButton instances
         // So we need to make sure the ColorPicker is properly set for this button

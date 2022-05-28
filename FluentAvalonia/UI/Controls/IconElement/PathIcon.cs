@@ -47,6 +47,16 @@ namespace FluentAvalonia.UI.Controls
         public static readonly StyledProperty<Stretch> StretchProperty =
             Shape.StretchProperty.AddOwner<PathIcon>();
 
+		protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+		{
+			base.OnPropertyChanged(change);
+			if (change.Property == DataProperty)
+			{
+				InvalidateMeasure();
+				InvalidateVisual();
+			}
+		}
+
         /// <summary>
         /// Gets or sets a <see cref="Stretch"/> enumeration value that describes how the shape fills its allocated space.
         /// </summary>
