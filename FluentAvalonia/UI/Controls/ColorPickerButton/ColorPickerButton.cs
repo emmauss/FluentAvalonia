@@ -66,7 +66,7 @@ public partial class ColorPickerButton : TemplatedControl, IStyleable
         if (change.Property == ColorProperty)
         {
             var (oldV, newV) = change.GetOldAndNewValue<Color2>();
-            ColorChanged?.Invoke(this, new ColorChangedEventArgs(oldV, newV));
+            ColorChanged?.Invoke(this, new ColorButtonColorChangedEventArgs(oldV, newV));
         }
     }
 
