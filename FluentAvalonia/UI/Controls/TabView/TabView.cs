@@ -72,8 +72,8 @@ namespace FluentAvalonia.UI.Controls
                 _addButtonColumn = _tabContainerGrid.ColumnDefinitions[2];
                 _rightContentColumn = _tabContainerGrid.ColumnDefinitions[3];
 
-                _tabContainerGrid.PointerEnter += OnTabStripPointerEnter;
-                _tabContainerGrid.PointerLeave += OnTabStripPointerLeave;
+                _tabContainerGrid.PointerEntered += OnTabStripPointerEnter;
+                _tabContainerGrid.PointerExited += OnTabStripPointerLeave;
 
                 // Adding this to mimic XYFocusKeyboardNavigation in the tabstrip
                 _tabContainerGrid.KeyDown += OnTabContainerGridKeyDown;
@@ -1063,8 +1063,8 @@ namespace FluentAvalonia.UI.Controls
         {
             if (_tabContainerGrid != null)
             {
-                _tabContainerGrid.PointerEnter -= OnTabStripPointerEnter;
-                _tabContainerGrid.PointerLeave -= OnTabStripPointerLeave;
+                _tabContainerGrid.PointerEntered -= OnTabStripPointerEnter;
+                _tabContainerGrid.PointerExited -= OnTabStripPointerLeave;
             }
 
             if (_listView != null)

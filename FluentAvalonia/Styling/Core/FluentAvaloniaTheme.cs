@@ -466,6 +466,12 @@ namespace FluentAvalonia.Styling
             {
                 theme = ResolveMacOSSystemSettings();
             }
+#if NET6_0_OR_GREATER
+            else if (OperatingSystem.IsAndroid())
+            {
+                theme = ResolveAndroidSystemSettings();
+            }
+#endif
 
             // Load the SymbolThemeFontFamily
             AddOrUpdateSystemResource("SymbolThemeFontFamily", new FontFamily(new Uri("avares://FluentAvalonia"), "/Fonts/#Symbols"));
@@ -661,6 +667,24 @@ namespace FluentAvalonia.Styling
                 }
             }
             catch { }
+
+            if (CustomAccentColor != null)
+            {
+                LoadCustomAccentColor();
+            }
+            else
+            {
+                LoadDefaultAccentColor();
+            }
+
+            AddOrUpdateSystemResource("ContentControlThemeFontFamily", FontFamily.Default);
+
+            return theme;
+        }
+
+        private string ResolveAndroidSystemSettings()
+        {
+            string theme = IsValidRequestedTheme(_requestedTheme) ? _requestedTheme : LightModeString;
 
             if (CustomAccentColor != null)
             {
