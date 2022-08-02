@@ -74,10 +74,15 @@
                                                 <ContentPresenter Name="Content" 
                                                                   ContentTemplate="{TemplateBinding ContentTemplate}"
                                                                   Content="{TemplateBinding Content}"
-                                                                  TextBlock.FontSize="{StaticResource ControlContentThemeFontSize}"
-                                                                  TextBlock.FontFamily="{StaticResource ContentControlThemeFontFamily}"
                                                                   TextBlock.Foreground="{TemplateBinding Foreground}"
-                                                                  Grid.Row="1"/>
+                                                                  Grid.Row="1">
+                                                    <ContentPresenter.Styles>
+                                                        <Style Selector="TextBlock">
+                                                            <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}"/>
+                                                            <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}"/>
+                                                        </Style>
+                                                    </ContentPresenter.Styles>
+                                                </ContentPresenter>
                                             </Grid>
                                         </Border>
                                     </ScrollViewer>
